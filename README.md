@@ -23,6 +23,16 @@ To start application you need to run the following command:
 vagrant up
 ```
 
+## Check if it works
+
+To check that it works please run
+
+```bash
+curl 0.0.0.0:8080/ping
+```
+
+Wou should see '{"message":"pong"}' response.
+
 ## Clean up
 
 To halt and delete VM you started please run:
