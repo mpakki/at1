@@ -12,11 +12,16 @@
         name: pip
         executable: pip3
         state: latest
-    - name: install docker-compose
+    - name: Install docker-py
       pip:
-        name: docker-compose
+        name: 
+          - docker
+          - docker-compose
         executable: pip3
-      # get_url: 
-      #   url : https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
-      #   dest: /usr/local/bin/docker-compose
-      #   mode: 'a+x'
+        state: latest
+    - name: Create and start services
+      community.docker.docker_compose:
+        project_src: .
+      vars:
+        ansible_python_interpreter: /bin/python3
+      register: output
