@@ -1,0 +1,21 @@
+version: "2"
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - /vagrant/reverse_proxy.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+  backend1:
+    image: registry.gitlab.com/salamachinas/infra-challenge:latest
+    expose:
+      - "4000"
+  backend2:
+    image: registry.gitlab.com/salamachinas/infra-challenge:latest
+    expose:
+      - "4000"
+  backend3:
+    image: registry.gitlab.com/salamachinas/infra-challenge:latest
+    expose:
+      - "4000"
+
