@@ -2,11 +2,21 @@
 - hosts: all
   become: yes
   tasks:
+    - name: Install pip3
+      apt:
+        name: python3-pip
+        update_cache: yes
+        state: present
+    - name: Upgrade pip3
+      pip:
+        name: pip
+        executable: pip3
+        state: latest
     - name: install docker-compose
-      # pip:
-      #   name: docker-compose
-      #   state: present
-      get_url: 
-        url : https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
-        dest: /usr/local/bin/docker-compose
-        mode: 'a+x'
+      pip:
+        name: docker-compose
+        executable: pip3
+      # get_url: 
+      #   url : https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+      #   dest: /usr/local/bin/docker-compose
+      #   mode: 'a+x'
