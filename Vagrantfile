@@ -1,5 +1,10 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/focal64"
+  config.vm.define "at1"
+  config.vm.provider :virtualbox do |vb|
+    vb.name = "at1"
+  end
+  config.vm.hostname = "at1"
   config.vm.provision "docker",
     images: ["registry.gitlab.com/salamachinas/infra-challenge:latest"]
   config.vm.provision "ansible_local" do |ansible|
